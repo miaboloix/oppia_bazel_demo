@@ -57,6 +57,7 @@ maven_install(
       "io.fabric.sdk.android:fabric:1.4.7", #firebase
       "com.squareup.retrofit2:retrofit:2.9.0",
       "com.squareup.retrofit2:converter-gson:2.5.0",
+      "com.google.gms:google-services:4.3.3", #firebase
     ],
     repositories = DAGGER_REPOSITORIES + [
         "https://jcenter.bintray.com/",

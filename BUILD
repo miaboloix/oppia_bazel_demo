@@ -24,6 +24,7 @@ android_library(
     exports = [
         artifact("com.crashlytics.sdk.android:crashlytics"),
         artifact("io.fabric.sdk.android:fabric"),
+        artifact("com.google.gms:google-services:4.3.3"),
     ],
 )
 
@@ -66,12 +67,12 @@ java_import(
 
 android_binary(
     name = "bindingtest",
-    custom_package = "com.google.android.bindingtest",
+    custom_package = "org.oppia.app",
     manifest = "AndroidManifest.xml",
     deps = [
       ":bindingtest_lib",
-      #":crashlytics_lib",
-      #":crashlytics_deps",
+      ":crashlytics_lib",
+      ":crashlytics_deps",
     ],
 )
 
