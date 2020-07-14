@@ -24,7 +24,7 @@ android_library(
     exports = [
         artifact("com.crashlytics.sdk.android:crashlytics"),
         artifact("io.fabric.sdk.android:fabric"),
-        artifact("com.google.gms:google-services:4.3.3"),
+        #artifact("com.google.gms:google-services:4.3.3"),
     ],
 )
 
