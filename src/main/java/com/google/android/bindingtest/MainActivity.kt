@@ -66,7 +66,6 @@ class MainActivity : Activity() {
 
     response.enqueue(object : Callback<ExchangeResponse>{
       override fun onFailure(call: Call<ExchangeResponse>, t: Throwable) {
-
       }
 
       override fun onResponse(call: Call<ExchangeResponse>, response: Response<ExchangeResponse>) {
