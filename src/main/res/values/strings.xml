@@ -3,4 +3,11 @@
   <string name="app_name">BindingTest</string>
   <string name="rub">RUB:</string>
   <string name="usd">USD:</string>
+  <string name="id">Id:</string>
+  <string name="answer_groups">Answer groups:</string>
+  <string name="solution">Solution:</string>
+  <string name="confirmed_unclassified_answers">Confirmed unclassified answers:</string>
+  <string name="hints">Hints:</string>
+  <string name="default_outcome">Default outcome:</string>
+  <string name="customization_args">Customization args:</string>
 </resources>

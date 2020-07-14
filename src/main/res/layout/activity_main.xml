@@ -22,15 +22,71 @@
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:id="@+id/usd_text"
+      android:id="@+id/record_playthrough_probability"
       android:text="@string/usd"
-      android:textSize="37sp"/>
+      android:textSize="30sp"/>
 
   <TextView android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:id="@+id/rub_text"
+      android:id="@+id/exploration_id"
       android:text="@string/rub"
-      android:textSize="37sp"
+      android:textSize="30sp"
       />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/state_classifier_mapping"
+      android:text="@string/id"
+      android:textSize="30sp"/>
+
+  <TextView android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/user_email"
+      android:text="@string/answer_groups"
+      android:textSize="30sp"
+      />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/version"
+      android:text="@string/solution"
+      android:textSize="30sp"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/correctness_feedback_enabled"
+      android:text="@string/confirmed_unclassified_answers"
+      android:textSize="30sp"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/username"
+      android:text="@string/hints"
+      android:textSize="30sp"/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/is_logged_in"
+    android:text="@string/default_outcome"
+    android:textSize="30sp"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/exploration"
+      android:text="@string/customization_args"
+      android:textSize="30sp"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/session_id"
+      android:text="@string/customization_args"
+      android:textSize="30sp"/>
 
 </LinearLayout>
