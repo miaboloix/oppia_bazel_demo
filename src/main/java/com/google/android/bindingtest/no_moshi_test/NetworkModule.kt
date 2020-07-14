@@ -40,12 +40,13 @@ class NetworkModule {
                 .build()
     }
 
+    /*
     /**
      * Provides the Topic service implementation.
      * @param retrofit the Retrofit object used to instantiate the service
      * @return the Topic service implementation.
      */
-  /*  @Provides
+    @Provides
     @Singleton
     fun provideTopicService(@OppiaRetrofit retrofit: Retrofit): TopicService {
         return retrofit.create(TopicService::class.java)

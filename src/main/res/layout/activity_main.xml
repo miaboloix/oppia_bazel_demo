@@ -7,17 +7,32 @@
   android:paddingRight="16dp"
   android:orientation="vertical">
 
+
+  <TextView
+      android:id="@+id/title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Crashlytics Test: "
+      android:textSize="30sp" />
+
   <TextView
     android:id="@+id/test_text_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Test Value"/>
+    android:text=""/>
 
   <Button
       android:id="@+id/test_button"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Crash Me"/>
+
+  <TextView
+      android:id="@+id/title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Retrofit Test: "
+      android:textSize="30sp" />
 
   <TextView
       android:layout_width="wrap_content"
@@ -30,8 +45,7 @@
       android:layout_height="wrap_content"
       android:id="@+id/exploration_id"
       android:text="@string/rub"
-      android:textSize="30sp"
-      />
+      android:textSize="30sp" />
 
   <TextView
       android:layout_width="wrap_content"
@@ -44,8 +58,7 @@
       android:layout_height="wrap_content"
       android:id="@+id/user_email"
       android:text="@string/answer_groups"
-      android:textSize="30sp"
-      />
+      android:textSize="30sp" />
 
   <TextView
       android:layout_width="wrap_content"

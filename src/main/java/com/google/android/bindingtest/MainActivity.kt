@@ -10,6 +10,9 @@ import com.google.android.bindingtest.retrofit_gson_test.RequestApi
 import com.google.android.bindingtest.retrofit_gson_test.ExchangeResponse
 import com.google.android.bindingtest.no_moshi_test.GaeExplorationContainer
 import com.google.android.bindingtest.no_moshi_test.ExplorationService
+import com.google.android.bindingtest.no_moshi_test.NetworkSettings
+import com.google.android.bindingtest.no_moshi_test.NetworkInterceptor
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,11 +29,14 @@ class MainActivity : Activity() {
   private val response_rates = posts_api_rates.getAllPosts()
    */
 
-  private val retrofit_no_moshi = Retrofit.Builder().baseUrl("https://oppia.org/explorehandler/init/")
+  //val lateinit client = OkHttpClient.Builder()
+  //client.addInterceptor(NetworkInterceptor())
+
+  private val retrofit = Retrofit.Builder().baseUrl("https://oppia.org/")
           .addConverterFactory(GsonConverterFactory.create())
           .build()
-  private val posts_api_no_moshi = retrofit_no_moshi.create(ExplorationService::class.java)
-  private val response = posts_api_no_moshi.getExplorationById()
+  private val posts = retrofit.create(ExplorationService::class.java)
+  private val response = posts.getExplorationById()
 
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +69,8 @@ class MainActivity : Activity() {
 
     response.enqueue(object : Callback<GaeExplorationContainer>{
       override fun onFailure(call: Call<GaeExplorationContainer>, t: Throwable) {
+        val record_playthrough_probability: TextView = findViewById(R.id.record_playthrough_probability)
+        record_playthrough_probability.text = "No Response Received"
       }
 
       override fun onResponse(call: Call<GaeExplorationContainer>, response: Response<GaeExplorationContainer>) {
@@ -79,8 +87,8 @@ class MainActivity : Activity() {
         val exploration: TextView = findViewById(R.id.exploration)
         val session_id: TextView = findViewById(R.id.session_id)
 
-        record_playthrough_probability.text = "record: ${mResponse?.record_playthrough_probability.toString()}"
-        exploration_id.text = "expl id: ${mResponse?.exploration_id.toString()}"
+        record_playthrough_probability.text = "record: ${mResponse?.record_playthrough_probability.toString()}" //expected value: 0.2
+        exploration_id.text = "expl id: ${mResponse?.exploration_id.toString()}" //expected value: umPkwp0L1M0-
         state_classifier_mapping.text = "state mapping: ${mResponse?.state_classifier_mapping.toString()}"
         user_email.text = "email: ${mResponse?.user_email.toString()}"
         version.text = "version: ${mResponse?.version.toString()}"
