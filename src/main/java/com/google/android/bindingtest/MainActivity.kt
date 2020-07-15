@@ -12,36 +12,31 @@ import com.google.android.bindingtest.no_moshi_test.GaeExplorationContainer
 import com.google.android.bindingtest.no_moshi_test.ExplorationService
 import com.google.android.bindingtest.no_moshi_test.NetworkSettings
 import com.google.android.bindingtest.no_moshi_test.NetworkInterceptor
+import com.google.android.bindingtest.no_moshi_test.NetworkModule
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.net.Credentials
+import android.util.Log
+import java.io.IOException
+import java.util.logging.Level
 
 class MainActivity : Activity() {
-
-  /*
-  private val retrofit_rates = Retrofit.Builder().baseUrl("https://api.exchangeratesapi.io/")
-          .addConverterFactory(GsonConverterFactory.create())
-          .build()
-  private val posts_api_rates = retrofit_rates.create(RequestApi::class.java)
-  private val response_rates = posts_api_rates.getAllPosts()
-   */
-
-  //val lateinit client = OkHttpClient.Builder()
-  //client.addInterceptor(NetworkInterceptor())
-
-  private val retrofit = Retrofit.Builder().baseUrl("https://oppia.org/")
-          .addConverterFactory(GsonConverterFactory.create())
-          .build()
-  private val posts = retrofit.create(ExplorationService::class.java)
-  private val response = posts.getExplorationById()
-
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+
+    var networkInterceptor: NetworkInterceptor = NetworkInterceptor()
+    var okHttpClient: OkHttpClient = OkHttpClient().newBuilder()
+            .addInterceptor(networkInterceptor).build()
+    val retrofit = Retrofit.Builder().baseUrl("https://oppia.org/")
+            .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
+    val posts = retrofit.create(ExplorationService::class.java)
+    val response = posts.getExplorationById()
 
     /*
     val component = DaggerSimpleComponent.builder().build()
@@ -68,6 +63,7 @@ class MainActivity : Activity() {
     })*/
 
     response.enqueue(object : Callback<GaeExplorationContainer>{
+
       override fun onFailure(call: Call<GaeExplorationContainer>, t: Throwable) {
         val record_playthrough_probability: TextView = findViewById(R.id.record_playthrough_probability)
         record_playthrough_probability.text = "No Response Received"

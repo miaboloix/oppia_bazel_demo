@@ -3,6 +3,7 @@ package com.google.android.bindingtest.no_moshi_test
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.ResponseBody
+
 import com.google.android.bindingtest.no_moshi_test.Constants
 import java.io.IOException
 import javax.inject.Inject
@@ -20,7 +21,6 @@ class NetworkInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val response = chain.proceed(request)
-
         if (response.code() == Constants.HTTP_OK) {
             if (response.body() != null) {
                 var rawJson = response.body()!!.string()
@@ -40,6 +40,7 @@ class NetworkInterceptor @Inject constructor() : Interceptor {
      * @return String: rawJson without XSSI_PREFIX
      */
     fun removeXSSIPrefix(rawJson: String): String {
+        //android.util.Log.i("tag", rawJson.removePrefix(NetworkSettings.XSSI_PREFIX).trimStart())
         return rawJson.removePrefix(NetworkSettings.XSSI_PREFIX).trimStart()
     }
 }

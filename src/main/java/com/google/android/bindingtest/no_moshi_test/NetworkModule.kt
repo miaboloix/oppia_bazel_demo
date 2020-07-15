@@ -16,19 +16,19 @@ import retrofit2.converter.gson.GsonConverterFactory
  *
  * Sample resource: https://github.com/gahfy/Feed-Me/tree/unitTests
  */
-@Module
+//@Module
 class NetworkModule {
 
-    @Qualifier
-    private annotation class OppiaRetrofit
+    //@Qualifier
+    //private annotation class OppiaRetrofit
 
     /**
      * Provides the Retrofit object.
      * @return the Retrofit object
      */
-    @OppiaRetrofit
-    @Provides
-    @Singleton
+    //@OppiaRetrofit
+    //@Provides
+    //@Singleton
     fun provideRetrofitInstance(): Retrofit {
         val client = OkHttpClient.Builder()
         client.addInterceptor(NetworkInterceptor())
